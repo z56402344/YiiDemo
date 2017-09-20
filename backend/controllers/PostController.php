@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Poststatus;
 use Yii;
 use common\models\Post;
 use common\models\PostSearch;
@@ -51,6 +52,9 @@ class PostController extends Controller
      */
     public function actionView($id)
     {
+//        $model = Post::findAll(['status' => 0]);
+//        var_dump($model);
+//        exit(0);
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -121,4 +125,9 @@ class PostController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function getStatus0(){
+        return $this ->hasOne(Poststatus::className(),['id' => 'status']);
+    }
+
 }
