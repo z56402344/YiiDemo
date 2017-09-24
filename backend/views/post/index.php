@@ -31,11 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'title',
 //            'author_id',
-            ['attribute'=>'author_id',
+//            ['attribute'=>'author_id',
+//                'label' =>'作者',
+//                'value'=>'author.nickname',
+//                'contentOptions'=>['width'=>'30px']
+//             ],
+            ['attribute'=>'authorName',
                 'label' =>'作者',
                 'value'=>'author.nickname',
                 'contentOptions'=>['width'=>'30px']
-             ],
+            ],
 //            'content:ntext',
             'tags:ntext',
 //            'status',
