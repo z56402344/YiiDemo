@@ -121,4 +121,15 @@ class CommentController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function getStatus0(){
+        return $this ->hasOne(Poststatus::className(),['id' => 'status']);
+    }
+
+    public function actionApprove($id){
+        $model = $this->findModel($id);
+        if ($model->approve()){
+            return $this->redirect(['index']);
+        }
+    }
 }
