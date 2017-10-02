@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\models\AdminLoginForm;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -74,11 +75,13 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        $model = new AdminLoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            //登陆成功,回到登陆前的页面
             return $this->goBack();
         } else {
-            return $this->render('login', [
+            //登陆失败,登录页面展示提示,让用户填写正确的用户名和密码
+              return $this->render('login', [
                 'model' => $model,
             ]);
         }

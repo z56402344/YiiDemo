@@ -17,7 +17,7 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'common\models\AdminUser',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
@@ -25,6 +25,15 @@ return [
             // this is the name of the session cookie used for login on the backend
             'name' => 'advanced-backend',
         ],
+//        'session' => [
+//            // this is the name of the session cookie used for login on the backend
+//            'name' => 'advanced-backend',
+//            'savePath'=>sys_get_temp_dir(),
+//        ],
+//        'request'=>[
+//          'cookieValidationKey'=>'sdfjjksloeedf78789judf',
+//            'csrfParam'=>'_adminCSRF'
+//        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
