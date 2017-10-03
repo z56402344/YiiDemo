@@ -7,6 +7,7 @@ use Yii;
 use common\models\Post;
 use common\models\PostSearch;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -68,6 +69,9 @@ class PostController extends Controller
     public function actionCreate()
     {
         $model = new Post();
+        if (!Yii::$app->user->can('createPost')){
+            throw new ForbiddenHttpException('对不起,你没有进行该操作的权限。');
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -87,7 +91,9 @@ class PostController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        if (!Yii::$app->user->can('updatePost')){
+            throw new ForbiddenHttpException('对不起,你没有进行该操作的权限。');
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -106,7 +112,9 @@ class PostController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        if (!Yii::$app->user->can('deletePost')){
+            throw new ForbiddenHttpException('对不起,你没有进行该操作的权限。');
+        }
         return $this->redirect(['index']);
     }
 

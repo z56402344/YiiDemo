@@ -38,10 +38,18 @@ return [
         ],
         /*
         'urlManager' => [
+            //开启URL美化,可以去掉 index.php?r=
             'enablePrettyUrl' => true,
+            //如果开启叫本命,会显示  index.php
             'showScriptName' => false,
+            //实现伪静态
+            'suffix'=>'.html',
             'rules' => [
-            ],
+                //文章详细页面的美化规则
+                '<controller:\w=>/<id:\d+>'=>'<controller>/detail',
+                //文章列表页面的美化规则
+                'posts'=>'post/index',
+        ],
         ],
         */
     ],
