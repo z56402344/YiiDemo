@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use \frontend\components\TagsCloudWidget;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\PostSearch */
@@ -56,7 +57,9 @@ use yii\helpers\Html;
                         <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                         标签云
                     </li>
-                    <li class="list-group-item">标签云</li>
+                    <li class="list-group-item">
+                        <?= TagsCloudWidget::widget(['tags'=>$tags]) ?>
+                    </li>
                 </ul>
 
             </div>
